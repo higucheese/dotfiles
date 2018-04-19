@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dirs=(".emacs.d" ".config/nvim")
+dirs=(".emacs.d" ".config/nvim" ".config/nvim/colors")
 
 for dir in "${dirs[@]}"
 do
@@ -14,3 +14,4 @@ ln -si ${dotfiles}/.tmux.conf ${HOME}/.tmux.conf
 ln -si ${dotfiles}/.zshrc ${HOME}/.zshrc
 ln -si ${dotfiles}/.zshrc.linux ${HOME}/.zshrc.linux
 ln -si ${dotfiles}/.bashrc ${HOME}/.bashrc
+ln -si ${dotfiles}/vim/vim-hybrid/colors/hybrid.vim ${HOME}/.config/nvim/colors/hybrid.vim
