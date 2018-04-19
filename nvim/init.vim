@@ -24,17 +24,26 @@ exe 'set runtimepath+=' . s:dein_dir
 
 if dein#load_state(s:dein_plugin_dir)
     call dein#begin(s:dein_plugin_dir)
-    
+
     call dein#add('Shougo/deoplete.nvim')
     call dein#add('w0ng/vim-hybrid')
-    
+    call dein#add('scrooloose/nerdtree')
+    call dein#add('itchyny/lightline.vim')
+
     call dein#end()
     call dein#save_state()
 endif
 
-"if dein#check_install()
-"    call dein#install()
-"endif
+if dein#check_install()
+    call dein#install()
+endif
+
+"}}}
+
+" autocmd "{{{
+
+"autocmd VimEnter * execute 'NERDTree'
+autocmd BufWritePre * :%s/\s\+$//ge
 
 "}}}
 
@@ -43,7 +52,9 @@ filetype plugin indent on
 syntax enable
 set fenc=utf-8
 set autoread
+set sh=zsh
 
+au FileType vim setlocal foldmethod=marker
 " visual
 set number
 set cursorline
@@ -54,7 +65,8 @@ set visualbell
 set showmatch
 set laststatus=2
 set wildmode=list:longest
-set list listchars=tab:\▸\-
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -64,10 +76,10 @@ set smartcase
 set incsearch
 set wrapscan
 set hlsearch
-
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 set background=dark
 colorscheme hybrid
 
-set sh=zsh
+let NERDTreeQuitOnOpen=1
+nmap <C-f> :NERDTree<Cr><Esc>
