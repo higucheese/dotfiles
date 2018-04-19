@@ -12,4 +12,5 @@ ln -s init.vim ${HOME}/.config/nvim
 ln -s .tmux.conf ${HOME}/.tmux.conf
 ln -s .zshrc ${HOME}/.zshrc
 ln -s .zshrc.linux ${HOME}/.zshrc.linux
+ln -s .bashrc ${HOME}/.bashrc
 ln -s .gitconfig ${HOME}/.gitconfig
