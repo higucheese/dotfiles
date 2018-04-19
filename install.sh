@@ -1,4 +1,4 @@
-/bin/sh
+#!/bin/bash
 
 dirs=(".emacs.d" ".config/nvim")
 
@@ -7,10 +7,10 @@ do
     mkdir -p "${HOME}/${dir}"
 done
 
-ln -s init.el ${HOME}/.emacs.d
-ln -s init.vim ${HOME}/.config/nvim
-ln -s .tmux.conf ${HOME}/.tmux.conf
-ln -s .zshrc ${HOME}/.zshrc
-ln -s .zshrc.linux ${HOME}/.zshrc.linux
-ln -s .bashrc ${HOME}/.bashrc
-ln -s .gitconfig ${HOME}/.gitconfig
+dotfiles="${HOME}/dotfiles"
+ln -si ${dotfiles}/init.el ${HOME}/.emacs.d
+ln -si ${dotfiles}/init.vim ${HOME}/.config/nvim
+ln -si ${dotfiles}/.tmux.conf ${HOME}/.tmux.conf
+ln -si ${dotfiles}/.zshrc ${HOME}/.zshrc
+ln -si ${dotfiles}/.zshrc.linux ${HOME}/.zshrc.linux
+ln -si ${dotfiles}/.bashrc ${HOME}/.bashrc
