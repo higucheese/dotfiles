@@ -82,4 +82,5 @@ set background=dark
 colorscheme hybrid
 
 let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
 nmap <C-f> :NERDTree<Cr><Esc>
