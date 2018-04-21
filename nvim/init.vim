@@ -58,11 +58,16 @@ au FileType vim setlocal foldmethod=marker
 " visual
 set number
 set cursorline
-"set cursorcolumn
+set cursorcolumn
 set virtualedit=onemore
+set autoindent
 set smartindent
 set visualbell
+
+" 括弧の対応付を表示(0.1秒)
 set showmatch
+set matchtime=1
+
 set laststatus=2
 set wildmode=list:longest
 set list
@@ -84,3 +89,11 @@ colorscheme hybrid
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 nmap <C-f> :NERDTree<Cr><Esc>
+
+nnoremap Y y$
+set display=lastline
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" clipboardとregisterの内容を共有
+set clipboard+=unnamedplus
