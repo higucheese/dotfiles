@@ -66,7 +66,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-
 # Enable X forwarding
 alias ssh='ssh -Y'
 
@@ -82,12 +81,10 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'                 # classify files in colour
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 
 ### Local Settings ###
-ZSHRC_LOCAL=".zshrc.linux"
-[ -f ${PWD}/${ZSHRC_LOCAL} ] && source ${ZSHRC_LOCAL}
+ZSHRC_LOCAL=${HOME}/".zshrc.linux"
+[ -f ${ZSHRC_LOCAL} ] && source ${ZSHRC_LOCAL}

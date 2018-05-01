@@ -1,37 +1,31 @@
-# cdコマンド実行後、lsを実行する
+# PATHの設定
+PATH=${PATH}:${HOME}/.local/bin
+PATH=${PATH}:${HOME}/.cargo/bin # rust
+PATH=${PATH}:/usr/local/cuda/bin # cuda
+PATH=${PATH}:${HOME}/virtualenv # virtualenv
+
+# 便利コマンド
 function cd() {
   builtin cd $@ && ls;
 }
-
-# gccの設定
-alias gcc='gcc -Wall'
-
-# openコマンドの設定
-alias open='xdg-open > /dev/null 2>&1'
-
-# emacsclientの設定
 function emacl(){
     emacsclient -n $@;
     if [ $? -ne 0 ]; then
 	/usr/bin/emacs $@ &;
     fi
 }
-alias emacs='emacl'
+## alias
+alias lg='git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s"'
+alias lgg='git log --graph --pretty=oneline --decorate --abbrev-commit --name-status'
+alias gcc='gcc -Wall'
+alias open='xdg-open > /dev/null 2>&1'
 
-# gcvの設定
-alias gcv='gcvgcv'
-function gcvgcv() {
-    g++ -std=c++11 -ggdb `pkg-config --cflags opencv` $@ `pkg-config --libs opencv`
-}
-
-# lgコマンドの作成
-alias lg='git log --graph --pretty=oneline --decorate --abbrev-commit --name-status'
-
-# firefoxのパス指定
+# 追加アプリケーション
 alias firefox='/opt/firefox/firefox-bin'
 
-# rustのパス指定
-PATH=${PATH}:/home/thiguchi/.cargo/bin
+if [ -f ${HOME}/.local/bin/virtualenvwrapper.sh ]; then
+    VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    export WORKON_HOME=${HOME}/virtualenvs
+    source ${HOME}/.local/bin/virtualenvwrapper.sh
+fi
 
-# CUDAのパス指定
-PATH=${PATH}:/usr/local/cuda/bin
