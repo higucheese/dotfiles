@@ -3,6 +3,7 @@ PATH=${PATH}:${HOME}/.local/bin
 PATH=${PATH}:${HOME}/.cargo/bin # rust
 PATH=${PATH}:/usr/local/cuda/bin # cuda
 PATH=${PATH}:${HOME}/virtualenv # virtualenv
+PATH=${PATH}:${HOME}/anaconda3/bin # anaconda3
 
 # 便利コマンド
 function cd() {
@@ -29,3 +30,5 @@ if [ -f ${HOME}/.local/bin/virtualenvwrapper.sh ]; then
     source ${HOME}/.local/bin/virtualenvwrapper.sh
 fi
 
+# anaconda
+. ${HOME}/anaconda3/etc/profile.d/conda.sh
