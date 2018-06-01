@@ -4,6 +4,8 @@ PATH=${PATH}:${HOME}/.cargo/bin # rust
 PATH=${PATH}:/usr/local/cuda/bin # cuda
 PATH=${PATH}:${HOME}/virtualenv # virtualenv
 PATH=${PATH}:${HOME}/anaconda3/bin # anaconda3
+GOPATH=${HOME}/go
+PATH=${PATH}:/usr/local/go/bin:${GOPATH}/bin # go
 
 # 便利コマンド
 function cd() {

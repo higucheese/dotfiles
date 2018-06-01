@@ -1,7 +1,7 @@
 ### Keybind ###
 # EDITORがvimでもemacsのキーバインドを使う
 bindkey -e
-EDITOR="vim"
+EDITOR="code"
 BROWSER="firefox"
 
 ### Zsh History ###
