@@ -17,6 +17,9 @@ function emacl(){
 	/usr/bin/emacs $@ &;
     fi
 }
+function yapf() {
+    PYTHONPATH=${HOME}/yapf python3 ${HOME}/yapf/yapf --in-place --verbose $@
+}
 ## alias
 alias lg='git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s"'
 alias lgg='git log --graph --pretty=oneline --decorate --abbrev-commit --name-status'
