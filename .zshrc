@@ -42,10 +42,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 ### Prompt ###
+autoload -Uz add-zsh-hook
 autoload -Uz promptinit; promptinit
 autoload -U colors; colors
-PROMPT="%K{blue}%n@%m%k %B%F{green}%44<...<%~
-%}%F{white} %# %b%f%k"
 if [[ $TERM = dumb ]]; then
     unset zle_bracketed_paste
 fi
@@ -56,7 +55,13 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
+add-zsh-hook precmd vcs_info
+function change_title () {
+    print -Pn "\e]0;%n@%m: %~\a"
+}
+add-zsh-hook precmd change_title
+PROMPT="%K{blue}%n@%m%k %B%F{green}%44<...<%~
+%}%F{white} %# %b%f%k"
 RPROMPT='${vcs_info_msg_0_}'
 SPROMPT="%{${fg[cyan]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
