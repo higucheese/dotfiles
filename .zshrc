@@ -48,21 +48,21 @@ autoload -U colors; colors
 if [[ $TERM = dumb ]]; then
     unset zle_bracketed_paste
 fi
-autoload -Uz vcs_info
-setopt prompt_subst
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-add-zsh-hook precmd vcs_info
+# autoload -Uz vcs_info
+# setopt prompt_subst
+# zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+# zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+# zstyle ':vcs_info:*' actionformats '[%b|%a]'
+# add-zsh-hook precmd vcs_info
 function change_title () {
     print -Pn "\e]0;%n@%m: %~\a"
 }
 add-zsh-hook precmd change_title
 PROMPT="%K{blue}%n@%m%k %B%F{green}%44<...<%~
 %}%F{white} %# %b%f%k"
-RPROMPT='${vcs_info_msg_0_}'
+# RPROMPT='${vcs_info_msg_0_}'
 SPROMPT="%{${fg[cyan]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
 ### Other Settings ###
