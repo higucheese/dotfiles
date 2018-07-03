@@ -1,7 +1,7 @@
 ### Keybind ###
 # EDITORがvimでもemacsのキーバインドを使う
 bindkey -e
-EDITOR="vim"
+EDITOR="code"
 BROWSER="firefox"
 
 ### Zsh History ###
@@ -42,10 +42,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 ### Prompt ###
+autoload -Uz add-zsh-hook
 autoload -Uz promptinit; promptinit
 autoload -U colors; colors
-PROMPT="%K{blue}%n@%m%k %B%F{green}%44<...<%~
-%}%F{white} %# %b%f%k"
 if [[ $TERM = dumb ]]; then
     unset zle_bracketed_paste
 fi
@@ -56,7 +55,13 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
+add-zsh-hook precmd vcs_info
+function change_title () {
+    print -Pn "\e]0;%n@%m: %~\a"
+}
+add-zsh-hook precmd change_title
+PROMPT="%K{blue}%n@%m%k %B%F{green}%44<...<%~
+%}%F{white} %# %b%f%k"
 RPROMPT='${vcs_info_msg_0_}'
 SPROMPT="%{${fg[cyan]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
@@ -65,7 +70,6 @@ SPROMPT="%{${fg[cyan]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
 
 # Enable X forwarding
 alias ssh='ssh -Y'
@@ -82,12 +86,10 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'                 # classify files in colour
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 
 ### Local Settings ###
-ZSHRC_LOCAL=".zshrc.linux"
-[ -f ${PWD}/${ZSHRC_LOCAL} ] && source ${ZSHRC_LOCAL}
+ZSHRC_LOCAL=${HOME}/".zshrc.linux"
+[ -f ${ZSHRC_LOCAL} ] && source ${ZSHRC_LOCAL}

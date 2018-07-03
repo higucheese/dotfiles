@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dirs=(".emacs.d" ".config")
+dirs=(".emacs.d" ".config" ".jupyter")
 
 for dir in "${dirs[@]}"
 do
@@ -16,3 +16,4 @@ ln -si ${dotfiles}/.zshrc ${HOME}/.zshrc
 ln -si ${dotfiles}/.zshrc.linux ${HOME}/.zshrc.linux
 ln -si ${dotfiles}/.bashrc ${HOME}/.bashrc
 ln -si ${dotfiles}/.bashrc.linux ${HOME}/.bashrc.linux
+ln -si ${dotfiles}/jupyter_notebook_config.py ${HOME}/.jupyter/jupyter_notebook_config.py
