@@ -88,9 +88,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -111,3 +111,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+### Local Settings ###
+BASHRC_LOCAL=".bashrc.linux"
+[ -f ${PWD}/${BASHRC_LOCAL} ] && source ${BASHRC_LOCAL}

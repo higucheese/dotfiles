@@ -1,0 +1,6 @@
+# added by Anaconda2 installer
+export PATH="/home/thiguchi/anaconda2/bin:$PATH"
+export PATH="/home/thiguchi/.local/bin:$PATH"
+
+# nvim
+alias vi='nvim'
