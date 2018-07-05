@@ -91,5 +91,4 @@ alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 
 ### Local Settings ###
-ZSHRC_LOCAL=${HOME}/".zshrc.linux"
-[ -f ${ZSHRC_LOCAL} ] && source ${ZSHRC_LOCAL}
+[ -f ${HOME}/.myconfig.sh ] && source ${HOME}/.myconfig.sh
