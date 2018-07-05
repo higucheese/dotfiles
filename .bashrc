@@ -107,4 +107,4 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 ### Local Settings ###
-[ -f ${HOME}/.myconfigsh ] && source ${HOME}/.myconfig.sh
+[ -f ${HOME}/.myconfig.sh ] && source ${HOME}/.myconfig.sh
