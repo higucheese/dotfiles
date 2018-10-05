@@ -47,6 +47,11 @@ autocmd BufWritePre * :%s/\s\+$//ge
 
 "}}}
 
+" deoplete
+if dein#tap('deoplete.nvim')
+    let g:deoplete#enable_at_startup = 1
+endif
+
 " setting
 filetype plugin indent on
 syntax enable
