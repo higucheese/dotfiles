@@ -1,3 +1,5 @@
+# fpath
+fpath=(/usr/share/zsh/5.0.2/functions ${fpath})
 ### Keybind ###
 # EDITORがvimでもemacsのキーバインドを使う
 bindkey -e
