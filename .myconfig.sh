@@ -6,6 +6,10 @@ fi
 if [ -d /usr/local/cuda ]; then # cuda
     PATH=/usr/local/cuda/bin:${PATH}
 fi
+if [ -d /usr/lib/llvm-6.0 ]; then # llvm
+    PATH=/usr/lib/llvm-6.0/bin:${PATH}
+    export CPLUS_INCLUDE_PATH=/usr/lib/llvm-6.0/include:${CPLUS_INCLUDE_PATH}
+fi
 if [ -d ${HOME}/anaconda3 ]; then # anaconda3
     PATH=${HOME}/anaconda3/bin:${PATH}
     . ${HOME}/anaconda3/etc/profile.d/conda.sh
@@ -26,6 +30,12 @@ if [ -d /usr/local/go ]; then # go
     PATH=/usr/local/go/bin:${GOPATH}/bin:${PATH}
 fi
 export PATH
+
+# LD_LIBRARY_PATH
+if [ -d $HOME/opt/OpenBLAS ]; then
+    LD_LIBRARY_PATH=$HOME/opt/OpenBLAS/lib:$LD_LIBRARY_PATH
+fi
+export LD_LIBRARY_PATH
 
 # 便利コマンド
 function cd() {
