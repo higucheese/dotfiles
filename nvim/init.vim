@@ -25,10 +25,10 @@ exe 'set runtimepath+=' . s:dein_dir
 if dein#load_state(s:dein_plugin_dir)
     call dein#begin(s:dein_plugin_dir)
 
-    call dein#add('Shougo/deoplete.nvim')
     call dein#add('w0ng/vim-hybrid')
-    call dein#add('scrooloose/nerdtree')
     call dein#add('itchyny/lightline.vim')
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('scrooloose/nerdtree')
 
     call dein#end()
     call dein#save_state()
@@ -36,6 +36,10 @@ endif
 
 if dein#check_install()
     call dein#install()
+endif
+
+if dein#tap('deoplete.nvim')
+    let g:deoplete#enable_at_startup = 1
 endif
 
 "}}}
@@ -46,11 +50,6 @@ endif
 autocmd BufWritePre * :%s/\s\+$//ge
 
 "}}}
-
-" deoplete
-if dein#tap('deoplete.nvim')
-    let g:deoplete#enable_at_startup = 1
-endif
 
 " setting
 filetype plugin indent on
