@@ -186,6 +186,7 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
+ '(package-selected-packages (quote (undo-tree company helm)))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)
