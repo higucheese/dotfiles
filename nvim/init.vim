@@ -44,12 +44,18 @@ endif
 
 "}}}
 
-" autocmd "{{{
+" 日本語用の設定
+setlocal formatoptions+=mM " 連結時に空白を入れない
+set spelllang=en,cjk       " 日本語はスペルチェックをしない
+if exists('&amiwidth')     " 記号でカーソル位置がずれないように
+    set ambiwidth=double
+endif
 
+" NERDTreeの自動起動
 "autocmd VimEnter * execute 'NERDTree'
-autocmd BufWritePre * :%s/\s\+$//ge
 
-"}}}
+" 行末のスペースを削除する
+autocmd BufWritePre * :%s/\s\+$//ge
 
 " setting
 filetype plugin indent on
@@ -60,6 +66,7 @@ set sh=zsh
 
 au FileType vim setlocal foldmethod=marker
 " visual
+set title
 set number
 set cursorline
 set cursorcolumn
@@ -101,3 +108,10 @@ nnoremap - <C-x>
 
 " clipboardとregisterの内容を共有
 set clipboard+=unnamedplus
+
+" tex
+autocmd FileType tex set wrap
+autocmd FileType tex set spell
+
+" Disable automatic commend insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
