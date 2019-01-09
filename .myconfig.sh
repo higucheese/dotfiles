@@ -66,3 +66,8 @@ if [ -x "$(command -v nvim)" ]; then
     alias vi='nvim'
     alias vim='nvim'
 fi
+
+# 設定の再読込
+if [ -d ${HOME}/.xinitrc ]; then
+    source ${HOME}/.xinitrc
+fi
