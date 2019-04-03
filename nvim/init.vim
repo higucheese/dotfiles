@@ -38,9 +38,9 @@ if dein#check_install()
     call dein#install()
 endif
 
-if dein#tap('deoplete.nvim')
-    let g:deoplete#enable_at_startup = 1
-endif
+" if dein#tap('deoplete.nvim')
+"     let g:deoplete#enable_at_startup = 1
+" endif
 
 "}}}
 
