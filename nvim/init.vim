@@ -25,10 +25,11 @@ exe 'set runtimepath+=' . s:dein_dir
 if dein#load_state(s:dein_plugin_dir)
     call dein#begin(s:dein_plugin_dir)
 
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('Shougo/unite.vim')
+    call dein#add('Shougo/vimfiler.vim')
     call dein#add('w0ng/vim-hybrid')
     call dein#add('itchyny/lightline.vim')
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('scrooloose/nerdtree')
 
     call dein#end()
     call dein#save_state()
@@ -42,14 +43,19 @@ endif
 "     let g:deoplete#enable_at_startup = 1
 " endif
 
+let g:vimfiler_as_default_explorer = 1
+
 "}}}
 
-" autocmd "{{{
+" 日本語用の設定
+setlocal formatoptions+=mM " 連結時に空白を入れない
+set spelllang=en_us,cjk    " 日本語はスペルチェックをしない
+if exists('&amiwidth')     " 記号でカーソル位置がずれないように
+    set ambiwidth=double
+endif
 
-"autocmd VimEnter * execute 'NERDTree'
+" 行末のスペースを削除する
 autocmd BufWritePre * :%s/\s\+$//ge
-
-"}}}
 
 " setting
 filetype plugin indent on
@@ -60,6 +66,7 @@ set sh=zsh
 
 au FileType vim setlocal foldmethod=marker
 " visual
+set title
 set number
 set cursorline
 set cursorcolumn
@@ -90,10 +97,6 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set background=dark
 colorscheme hybrid
 
-let NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=1
-nmap <C-o> :NERDTree<Cr><Esc>
-
 nnoremap Y y$
 set display=lastline
 nnoremap + <C-a>
@@ -101,3 +104,14 @@ nnoremap - <C-x>
 
 " clipboardとregisterの内容を共有
 set clipboard+=unnamedplus
+
+" tex
+autocmd FileType tex set wrap
+
+" spell check
+autocmd FileType tex set spell
+autocmd FileType markdown set spell
+autocmd FileType text set spell
+
+" Disable automatic command insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
