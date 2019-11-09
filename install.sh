@@ -17,3 +17,4 @@ ln -si ${dotfiles}/.bashrc ${HOME}/.bashrc
 ln -si ${dotfiles}/.myconfig.sh ${HOME}/.myconfig.sh
 ln -si ${dotfiles}/jupyter_notebook_config.py ${HOME}/.jupyter/jupyter_notebook_config.py
 ln -si ${dotfiles}/.xinitrc ${HOME}/.xinitrc
+ln -si ${dotfiles}/.gitignore_global ${HOME}/.gitignore_global
