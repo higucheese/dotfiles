@@ -54,8 +54,12 @@ if exists('&amiwidth')     " 記号でカーソル位置がずれないように
     set ambiwidth=double
 endif
 
-" 行末のスペースを削除する
-autocmd BufWritePre * :%s/\s\+$//ge
+" 行末のスペースを強調する
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
 
 " setting
 filetype plugin indent on
@@ -64,7 +68,11 @@ set fenc=utf-8
 set autoread
 set sh=zsh
 
+"" syntax-highlight setting
+au BufReadPost *.pxi set syntax=python
+au BufReadPost *.inc set syntax=make
 au FileType vim setlocal foldmethod=marker
+
 " visual
 set title
 set number
@@ -99,14 +107,13 @@ colorscheme hybrid
 
 nnoremap Y y$
 set display=lastline
-nnoremap + <C-a>
-nnoremap - <C-x>
 
 " clipboardとregisterの内容を共有
 set clipboard+=unnamedplus
 
 " tex
-autocmd FileType tex set wrap
+let g:tex_flavor = "latex"
+autocmd FileType tex set nowrap
 
 " spell check
 autocmd FileType tex set spell
