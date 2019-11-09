@@ -87,7 +87,7 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'                 # classify files in colour
-alias ll='ls -l'                              # long list
+alias ll='ls -tl'                             # long list sorted with created time
 alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 
