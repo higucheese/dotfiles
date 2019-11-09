@@ -60,9 +60,10 @@ function change_title () {
     print -Pn "\e]0;%n@%m: %~\a"
 }
 add-zsh-hook precmd change_title
-PROMPT="%K{blue}%n@%m%k %B%F{green}%44<...<%~
-%}%F{white} %# %b%f%k"
+PROMPT="%K{027}%n@%m%k %B%F{green}%44<...<%~
+%} %(?.%F{white}.%F{red})%# %b%f%k"
 # RPROMPT='${vcs_info_msg_0_}'
+RPROMPT="%F{cyan}[%*]%f"
 SPROMPT="%{${fg[cyan]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
 ### Other Settings ###
