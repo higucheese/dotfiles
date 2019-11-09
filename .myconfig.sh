@@ -38,7 +38,7 @@ fi
 export LD_LIBRARY_PATH
 
 # 便利コマンド
-function cd() {
+function cl() {
   builtin cd $@ && ls;
 }
 function emacl(){
@@ -46,9 +46,6 @@ function emacl(){
     if [ $? -ne 0 ]; then
         /usr/bin/emacs $@ &
     fi
-}
-function yapf() {
-    PYTHONPATH=${HOME}/yapf python3 ${HOME}/yapf/yapf --in-place --verbose $@
 }
 
 ## alias
@@ -67,6 +64,7 @@ if [ -x "$(command -v nvim)" ]; then
     alias vi='nvim'
     alias vim='nvim'
 fi
+alias diff='diff --color'
 
 # 設定の再読込
 if [ -d ${HOME}/.xinitrc ]; then
