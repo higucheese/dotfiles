@@ -35,6 +35,9 @@ export PATH
 if [ -d $HOME/opt/OpenBLAS ]; then
     LD_LIBRARY_PATH=$HOME/opt/OpenBLAS/lib:$LD_LIBRARY_PATH
 fi
+if [ -d $HOME/opt/CLBlast ]; then
+    LD_LIBRARY_PATH=$HOME/opt/CLBlast/lib:$LD_LIBRARY_PATH
+fi
 export LD_LIBRARY_PATH
 
 # 便利コマンド
