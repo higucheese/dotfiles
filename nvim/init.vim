@@ -2,32 +2,21 @@
 " Configuration for Neovim
 "
 
-" Initial setup "{{{
-
 if &compatible
     set nocompatible
 endif
 
 let s:config_home = expand('$HOME/.config/nvim')
 
-"}}}
-
-" dein.vim "{{{
-
 let s:dein_dir = s:config_home . '/dein.vim'
 let s:dein_plugin_dir = s:config_home . '/dein'
-
 let g:dein#install_process_timeout = 3600
-
 
 exe 'set runtimepath+=' . s:dein_dir
 
 if dein#load_state(s:dein_plugin_dir)
     call dein#begin(s:dein_plugin_dir)
 
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('Shougo/unite.vim')
-    call dein#add('Shougo/vimfiler.vim')
     call dein#add('w0ng/vim-hybrid')
     call dein#add('itchyny/lightline.vim')
 
@@ -39,41 +28,6 @@ if dein#check_install()
     call dein#install()
 endif
 
-" if dein#tap('deoplete.nvim')
-"     let g:deoplete#enable_at_startup = 1
-" endif
-
-let g:vimfiler_as_default_explorer = 1
-
-"}}}
-
-" 日本語用の設定
-setlocal formatoptions+=mM " 連結時に空白を入れない
-set spelllang=en_us,cjk    " 日本語はスペルチェックをしない
-if exists('&amiwidth')     " 記号でカーソル位置がずれないように
-    set ambiwidth=double
-endif
-
-" 行末のスペースを強調する
-augroup HighlightTrailingSpaces
-  autocmd!
-  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
-  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
-augroup END
-
-" setting
-filetype plugin indent on
-syntax enable
-set fenc=utf-8
-set autoread
-set sh=zsh
-
-"" syntax-highlight setting
-au BufReadPost *.pxi set syntax=python
-au BufReadPost *.inc set syntax=make
-au FileType vim setlocal foldmethod=marker
-
-" visual
 set title
 set number
 set cursorline
@@ -83,9 +37,8 @@ set autoindent
 set smartindent
 set visualbell
 
-" 括弧の対応付を表示(0.1秒)
+" Show the other parenthesis
 set showmatch
-set matchtime=1
 
 set laststatus=2
 set wildmode=list:longest
@@ -108,17 +61,44 @@ colorscheme hybrid
 nnoremap Y y$
 set display=lastline
 
-" clipboardとregisterの内容を共有
+" Share contents between register and clipboard
 set clipboard+=unnamedplus
 
-" tex
 let g:tex_flavor = "latex"
 autocmd FileType tex set nowrap
 
-" spell check
 autocmd FileType tex set spell
 autocmd FileType markdown set spell
 autocmd FileType text set spell
 
-" Disable automatic command insertion
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Disable automatic insertions of a comment header
+setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Settings for Japanese
+set spelllang=en_us,cjk " No spell check for Japanese
+setlocal formatoptions+=mM
+if exists('&amiwidth') " Set a width of some charactors
+    set ambiwidth=double
+endif
+
+" Emphasize white spaces in the end of a line
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
+
+filetype plugin indent on
+syntax enable
+set fenc=utf-8
+set sh=zsh
+
+" Automatically update a local buffer when its file is updated
+set autoread
+
+" syntax-highlight setting
+au BufReadPost *.pxi set syntax=python
+au BufReadPost *.inc set syntax=make
+au FileType vim setlocal foldmethod=marker
+
+
