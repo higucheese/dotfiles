@@ -48,48 +48,14 @@ autoload -U colors; colors
 if [[ $TERM = dumb ]]; then
     unset zle_bracketed_paste
 fi
-# autoload -Uz vcs_info
-# setopt prompt_subst
-# zstyle ':vcs_info:git:*' check-for-changes true
-# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-# zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-# zstyle ':vcs_info:*' actionformats '[%b|%a]'
-# add-zsh-hook precmd vcs_info
 function change_title () {
     print -Pn "\e]0;%n@%m: %~\a"
 }
 add-zsh-hook precmd change_title
-PROMPT="%K{027}%n@%m%k %B%F{green}%44<...<%~
+PROMPT="%K{027}%n@%m%k %B%F{yellow}[%*] %B%F{green}%44<...<%~
 %} %(?.%F{white}.%F{red})%# %b%f%k"
-# RPROMPT='${vcs_info_msg_0_}'
-RPROMPT="%F{cyan}[%*]%f"
 SPROMPT="%{${fg[cyan]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
-
-### Other Settings ###
-# Interactive command
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-# Enable X forwarding
-alias ssh='ssh -Y'
-
-# Default to human readable figures
-alias df='df -h'
-alias du='du -h'
-
-alias less='less -r'                          # raw control characters
-alias whence='type -a'                        # where, of a sort
-alias grep='grep --color'                     # show differences in colour
-alias egrep='egrep --color=auto'              # show differences in colour
-alias fgrep='fgrep --color=auto'              # show differences in colour
-
-# Some shortcuts for different directory listings
-alias ls='ls -hF --color=tty'                 # classify files in colour
-alias ll='ls -tl'                             # long list sorted with created time
-alias la='ls -A'                              # all but . and ..
-alias l='ls -CF'                              #
 
 ### Local Settings ###
 [ -f ${HOME}/.myconfig.sh ] && source ${HOME}/.myconfig.sh
+
