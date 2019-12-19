@@ -34,9 +34,8 @@ fi
 
 ### Prompt ###
 user_at_machine="\[\e[01;32m\]\u@\h\[\e[m\]"
-wall_clock="\[\e[01;33m\][$(date +%H:%M:%S)]\[\e[m\]"
 cwd="\[\e[01;34m\]\w\[\e[m\]"
-PS1="${user_at_machine} ${wall_clock} ${cwd}\n \$ "
+PS1="${user_at_machine} ${cwd}\n \$ "
 
 ### Local Settings ###
 [ -f ${HOME}/.myconfig.sh ] && source ${HOME}/.myconfig.sh
