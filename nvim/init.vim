@@ -36,6 +36,7 @@ set virtualedit=onemore
 set autoindent
 set smartindent
 set visualbell
+set autochdir
 
 " Show the other parenthesis
 set showmatch
