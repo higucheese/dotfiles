@@ -1,4 +1,4 @@
-# PATHの設定
+### PATH ###
 PATH=${HOME}/.local/bin:${HOME}/usr/bin:${PATH}
 if [ -d ${HOME}/.cargo ]; then # rust
     PATH=${HOME}/.cargo/bin:${PATH}
@@ -31,69 +31,38 @@ if [ -d /usr/local/go ]; then # go
 fi
 export PATH
 
-# LD_LIBRARY_PATH
-if [ -d $HOME/opt/OpenBLAS ]; then
-    LD_LIBRARY_PATH=$HOME/opt/OpenBLAS/lib:$LD_LIBRARY_PATH
-fi
-if [ -d $HOME/opt/CLBlast ]; then
-    LD_LIBRARY_PATH=$HOME/opt/CLBlast/lib:$LD_LIBRARY_PATH
-fi
-export LD_LIBRARY_PATH
-
-# 便利コマンド
-function cl() {
-  builtin cd $@ && ls;
-}
-function emacl(){
-    emacsclient -n $@;
-    if [ $? -ne 0 ]; then
-        /usr/bin/emacs $@ &
-    fi
-}
-
-## alias
-if [ -x "$(command -v git)" ]; then
+### alias ###
+if [ `command -v git` ]; then
     alias lg='git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s"'
     alias lgg='git log --graph --pretty=oneline --decorate --abbrev-commit --name-status'
 fi
-if [ -x "$(command -v xdg-open)" ]; then
-    alias open='xdg-open > /dev/null 2>&1'
+if [ `command -v xdg-open` ]; then
+    alias open='xdg-open'
 fi
-if [ -d /opt/firefox ]; then
-    alias firefox='/opt/firefox/firefox-bin'
-fi
-if [ -x "$(command -v nvim)" ]; then
-    alias v='nvim'
+if [ `command -v nvim` ]; then
     alias vi='nvim'
     alias vim='nvim'
 fi
-alias diff='diff --color'
 
+# Ask before deleting files
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-# Enable X forwarding
-alias ssh='ssh -Y'
 
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h'
 
-alias less='less -r'                          # raw control characters
-alias whence='type -a'                        # where, of a sort
-alias grep='grep --color=auto'                # show differences in colour
-alias egrep='egrep --color=auto'              # show differences in colour
-alias fgrep='fgrep --color=auto'              # show differences in colour
+# Show outputs in color
+alias grep='grep --color=auto'
+if [ `command -v colordiff` ]; then
+    alias diff='colordiff -u'
+else
+    alias diff='diff -u --color'
+fi
 
 # Some shortcuts for different directory listings
-alias ls='ls -hF --color=auto'                # classify files in colour
-alias ll='ls -tl'                             # long list sorted with created time
-alias la='ls -A'                              # all but . and ..
-alias l='ls -CF'                              #
+alias ls='ls -hF --color=auto' # classify files in colour
+alias ll='ls -tl'              # long list sorted with created time
+alias la='ls -A'               # all but . and ..
 
-
-# 設定の再読込
-if [ -d ${HOME}/.xinitrc ]; then
-    source ${HOME}/.xinitrc
-fi
