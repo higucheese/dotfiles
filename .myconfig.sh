@@ -66,3 +66,6 @@ alias ls='ls -hF --color=auto' # classify files in colour
 alias ll='ls -tl'              # long list sorted with created time
 alias la='ls -A'               # all but . and ..
 
+### LANG ###
+export LANG=ja_JP.UTF-8 # Alacritty使用時の文字化け防止
+
