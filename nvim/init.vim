@@ -19,6 +19,8 @@ if dein#load_state(s:dein_plugin_dir)
 
     call dein#add('w0ng/vim-hybrid')
     call dein#add('itchyny/lightline.vim')
+    call dein#add('rhysd/vim-clang-format')
+    call dein#add('kana/vim-operator-user')
 
     call dein#end()
     call dein#save_state()
@@ -27,6 +29,17 @@ endif
 if dein#check_install()
     call dein#install()
 endif
+
+" Settings of clang-format
+let g:clang_format#code_style = 'google'
+let g:clang_format#style_options = {
+            \'AccessModifierOffset': '-4',
+            \'ColumnLimit': '140',
+            \'IndentWidth': '4',
+            \'DerivePointerAlignment': 'false',
+            \'PointerAlignment': 'Left',
+            \'IncludeBlocks': 'Preserve',
+            \'AllowShortFunctionsOnASingleLine': 'None'}
 
 set title
 set number
@@ -100,6 +113,6 @@ set autoread
 " syntax-highlight setting
 au BufReadPost *.pxi set syntax=python
 au BufReadPost *.inc set syntax=make
+au BufReadPost *.vsm set syntax=vsm
 au FileType vim setlocal foldmethod=marker
-
 
