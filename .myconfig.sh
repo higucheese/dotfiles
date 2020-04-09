@@ -19,11 +19,9 @@ elif [ -d ${HOME}/anaconda2 ]; then # anaconda2
 fi
 if [ -d ${HOME}/virtualenv ]; then # virtualenv
     PATH=${HOME}/virtualenv:${PATH}
-    if [ -f ${HOME}/.local/bin/virtualenvwrapper.sh ]; then
-        VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-        export WORKON_HOME=${HOME}/virtualenvs
-        source ${HOME}/.local/bin/virtualenvwrapper.sh
-    fi
+    case "${OSTYPE}" in
+        darwin*) PATH=${HOME}/Library/Python/3.7/bin:${PATH} ;;
+    esac
 fi
 if [ -d /usr/local/go ]; then # go
     export GOPATH=${HOME}/go
