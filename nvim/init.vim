@@ -50,6 +50,7 @@ set autoindent
 set smartindent
 set visualbell
 set autochdir
+set mouse=a
 
 " Show the other parenthesis
 set showmatch
