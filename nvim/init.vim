@@ -51,10 +51,7 @@ set smartindent
 set visualbell
 set autochdir
 set mouse=a
-
-" Show the other parenthesis
-set showmatch
-
+set showmatch " Show the other parenthesis
 set laststatus=2
 set wildmode=list:longest
 set list
@@ -62,39 +59,43 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set expandtab
 set tabstop=4
 set shiftwidth=4
-
 set ignorecase
 set smartcase
 set incsearch
 set wrapscan
 set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+set display=lastline " Show a long line properly
+set clipboard+=unnamedplus " Share contents between register and clipboard
+set autoread " Automatically update a local buffer when its file is updated
 
+" ColorScheme
 set background=dark
 colorscheme hybrid
 
-nnoremap Y y$
-set display=lastline
+" Filetype
+filetype plugin indent on " Enable file type detection + plugin + indent
+syntax enable
+set fenc=utf-8
+set sh=zsh
 
-" Share contents between register and clipboard
-set clipboard+=unnamedplus
+"" Texts
+set spelllang=en_us,cjk " No spell check for Japanese
+set ambiwidth=double " Set a width of some charactors
+autocmd FileType * setlocal formatoptions+=mM
+autocmd FileType * setlocal formatoptions-=cro " Disable automatic insertions of a comment header
 
+"" LaTeX
 let g:tex_flavor = "latex"
-autocmd FileType tex set nowrap
-
-autocmd FileType tex set spell
+autocmd FileType tex set nowrap,spell
 autocmd FileType markdown set spell
 autocmd FileType text set spell
 
-" Disable automatic insertions of a comment header
-setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Settings for Japanese
-set spelllang=en_us,cjk " No spell check for Japanese
-setlocal formatoptions+=mM
-if exists('&amiwidth') " Set a width of some charactors
-    set ambiwidth=double
-endif
+"" Syntax-highlight
+autocmd BufReadPost *.pxi set syntax=python
+autocmd BufReadPost *.inc set syntax=make
+autocmd BufReadPost *.vsm set syntax=vsm
+autocmd FileType vim setlocal foldmethod=marker
 
 " Emphasize white spaces in the end of a line
 augroup HighlightTrailingSpaces
@@ -102,18 +103,4 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
-
-filetype plugin indent on
-syntax enable
-set fenc=utf-8
-set sh=zsh
-
-" Automatically update a local buffer when its file is updated
-set autoread
-
-" syntax-highlight setting
-au BufReadPost *.pxi set syntax=python
-au BufReadPost *.inc set syntax=make
-au BufReadPost *.vsm set syntax=vsm
-au FileType vim setlocal foldmethod=marker
 
