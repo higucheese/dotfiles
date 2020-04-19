@@ -87,7 +87,8 @@ autocmd FileType * setlocal formatoptions-=cro " Disable automatic insertions of
 
 "" LaTeX
 let g:tex_flavor = "latex"
-autocmd FileType tex set nowrap,spell
+autocmd FileType tex set nowrap
+autocmd FileType tex set spell
 autocmd FileType markdown set spell
 autocmd FileType text set spell
 
