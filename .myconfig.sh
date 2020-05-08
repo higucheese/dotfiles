@@ -6,9 +6,12 @@ fi
 if [ -d /usr/local/cuda ]; then # cuda
     PATH=/usr/local/cuda/bin:${PATH}
 fi
-if [ -d /usr/lib/llvm-6.0 ]; then # llvm
-    PATH=/usr/lib/llvm-6.0/bin:${PATH}
-    export CPLUS_INCLUDE_PATH=/usr/lib/llvm-6.0/include:${CPLUS_INCLUDE_PATH}
+#if [ -d /usr/lib/llvm-6.0 ]; then # llvm
+#    PATH=/usr/lib/llvm-6.0/bin:${PATH}
+#    export CPLUS_INCLUDE_PATH=/usr/lib/llvm-6.0/include:${CPLUS_INCLUDE_PATH}
+#fi
+if [ -d /usr/local/opt/llvm ]; then # llvm
+    PATH="/usr/local/opt/llvm/bin:${PATH}"
 fi
 if [ -d ${HOME}/anaconda3 ]; then # anaconda3
     PATH=${HOME}/anaconda3/bin:${PATH}
