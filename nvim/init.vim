@@ -21,6 +21,10 @@ if dein#load_state(s:dein_plugin_dir)
     call dein#add('itchyny/lightline.vim')
     call dein#add('rhysd/vim-clang-format')
     call dein#add('kana/vim-operator-user')
+    call dein#add('autozimu/LanguageClient-neovim', {
+                \ 'rev': 'next',
+                \ 'build': 'bash install.sh',
+                \ })
 
     call dein#end()
     call dein#save_state()
@@ -40,6 +44,14 @@ let g:clang_format#style_options = {
             \'PointerAlignment': 'Left',
             \'IncludeBlocks': 'Preserve',
             \'AllowShortFunctionsOnASingleLine': 'None'}
+
+" LSP
+let g:LanguageClient_serverCommands = {
+            \ 'cpp': ['clangd'],
+            \ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 set title
 set number
