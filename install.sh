@@ -7,7 +7,7 @@ installs=(\
     ".vimrc ${HOME}/.vimrc"\
     ".zshrc ${HOME}/.zshrc"\
     ".bashrc ${HOME}/.bashrc"\
-    ".myconfig.sh ${HOME}/.myconfig.sh"\
+    ".common_config.sh ${HOME}/.common_config.sh"\
     "jupyter_notebook_config.py ${HOME}/.jupyter/jupyter_notebook_config.py"\
     ".xinitrc ${HOME}/.xinitrc"\
     ".gitignore_global ${HOME}/.gitignore_global"\

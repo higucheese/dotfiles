@@ -38,5 +38,5 @@ cwd="\[\e[01;34m\]\w\[\e[m\]"
 PS1="${user_at_machine} ${cwd}\n \$ "
 
 ### Local Settings ###
-[ -f ${HOME}/.myconfig.sh ] && source ${HOME}/.myconfig.sh
-
+[ -f ${HOME}/.common_config.sh ] && source ${HOME}/.common_config.sh
+[ -f ${HOME}/.local_config.sh ] && source ${HOME}/.local_config.sh

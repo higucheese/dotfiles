@@ -60,5 +60,5 @@ PROMPT="%K{blue}%n@%m%k %B%F{yellow}[%T] %F{green}%44<...<%~
 SPROMPT="%F{cyan}%r is correct? [Yes, No, Abort, Edit]:%f"
 
 ### Local Settings ###
-[ -f ${HOME}/.myconfig.sh ] && source ${HOME}/.myconfig.sh
-
+[ -f ${HOME}/.common_config.sh ] && source ${HOME}/.common_config.sh
+[ -f ${HOME}/.local_config.sh ] && source ${HOME}/.local_config.sh
