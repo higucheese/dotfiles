@@ -1,5 +1,19 @@
 #!/bin/bash
 
+installs=(\
+    "init.el ${HOME}/.emacs.d/init.el"\
+    "nvim ${HOME}/.config/nvim"\
+    ".tmux.conf ${HOME}/.tmux.conf"\
+    ".vimrc ${HOME}/.vimrc"\
+    ".zshrc ${HOME}/.zshrc"\
+    ".bashrc ${HOME}/.bashrc"\
+    ".myconfig.sh ${HOME}/.myconfig.sh"\
+    "jupyter_notebook_config.py ${HOME}/.jupyter/jupyter_notebook_config.py"\
+    ".xinitrc ${HOME}/.xinitrc"\
+    ".gitignore_global ${HOME}/.gitignore_global"\
+    "alacritty ${HOME}/.config/alacritty"\
+)
+
 dirs=(".emacs.d" ".config" ".jupyter")
 
 for dir in "${dirs[@]}"
@@ -7,15 +21,10 @@ do
     mkdir -p "${HOME}/${dir}"
 done
 
-dotfiles="${HOME}/dotfiles"
-ln -si ${dotfiles}/init.el ${HOME}/.emacs.d/init.el
-ln -si ${dotfiles}/nvim ${HOME}/.config/nvim
-ln -si ${dotfiles}/.tmux.conf ${HOME}/.tmux.conf
-ln -si ${dotfiles}/.vimrc ${HOME}/.vimrc
-ln -si ${dotfiles}/.zshrc ${HOME}/.zshrc
-ln -si ${dotfiles}/.bashrc ${HOME}/.bashrc
-ln -si ${dotfiles}/.myconfig.sh ${HOME}/.myconfig.sh
-ln -si ${dotfiles}/jupyter_notebook_config.py ${HOME}/.jupyter/jupyter_notebook_config.py
-ln -si ${dotfiles}/.xinitrc ${HOME}/.xinitrc
-ln -si ${dotfiles}/.gitignore_global ${HOME}/.gitignore_global
-ln -si ${dotfiles}/alacritty ${HOME}/.config/alacritty
+script_path=$(cd $(dirname $0); pwd)
+
+for install in "${installs[@]}"
+do
+    ln -si ${script_path}/${install}
+done
+
