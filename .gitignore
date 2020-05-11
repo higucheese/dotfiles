@@ -2,3 +2,5 @@
 *.swp
 dein/
 .netrwhist
+nvim/syntax/*
+!.gitkeep
