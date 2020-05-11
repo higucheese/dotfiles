@@ -1,16 +1,27 @@
-# dotfiles
+# dotfiles: user's configuration files
 
-My configuration files
+## Install
 
-## nvim
+Run this following command.
+If there were existing settings, the script ask you to replace them or not.
 
-### deoplete
+```sh
+$ git clone --recursive [this repo's url]
+$ ./install.sh
+```
 
-Case of failure
- - :UpdateRemotePlugins
- - pip3 install --upgrade neovim --user
+## Info
 
-### syntax
+### deoplete.nvim
+
+[deoplete](https://github.com/Shougo/deoplete.nvim/)
+
+Case of failure:
+
+ - at nvim: `:UpdateRemotePlugins`
+ - at shell: `pip3 install --upgrade neovim --user`
+
+### nvim/syntax
 
 To install new syntax:
 
