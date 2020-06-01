@@ -35,3 +35,9 @@ set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 colorscheme elflord
+
+" Move to a previous position when opening file
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
