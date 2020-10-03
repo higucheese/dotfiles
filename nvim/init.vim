@@ -25,6 +25,7 @@ if dein#load_state(s:dein_plugin_dir)
                 \ 'rev': 'next',
                 \ 'build': 'bash install.sh',
                 \ })
+    call dein#add('airblade/vim-gitgutter')
 
     call dein#end()
     call dein#save_state()
@@ -122,3 +123,6 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
+
+" vim-gitgutter
+set updatetime=100
