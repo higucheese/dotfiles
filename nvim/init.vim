@@ -63,7 +63,7 @@ set autoindent
 set smartindent
 set visualbell
 set autochdir
-set mouse=a
+set mouse-=a
 set showmatch " Show the other parenthesis
 set laststatus=2
 set wildmode=list:longest
