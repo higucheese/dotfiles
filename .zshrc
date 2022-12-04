@@ -15,8 +15,8 @@ bindkey -e # emacs風のキーバインドを使う
 EDITOR="vi"
 
 ### Zsh History ###
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt bang_hist          # !を使ったヒストリ展開を行う(d)
 setopt extended_history   # ヒストリに実行時間も保存する
