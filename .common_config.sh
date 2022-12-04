@@ -31,6 +31,8 @@ else
     alias diff='diff -u --color'
 fi
 
+alias less='less -R'
+
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=auto' # classify files in colour
 alias ll='ls -tl'              # long list sorted with created time
