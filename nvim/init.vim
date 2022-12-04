@@ -50,6 +50,10 @@ let g:clang_format#style_options = {
 let g:LanguageClient_serverCommands = {
             \ 'cpp': ['clangd'],
             \ }
+" let g:LanguageClient_serverCommands = {
+"             \ 'cpp': ['clangd'],
+"             \ 'python': ['/home/thiguchi/virtualenv/optuna/bin/pyls'],
+"             \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
@@ -93,7 +97,7 @@ set fenc=utf-8
 set sh=zsh
 
 "" Texts
-set spelllang=en_us,cjk " No spell check for Japanese
+"set spelllang=en_us,cjk " No spell check for Japanese
 set ambiwidth=double " Set a width of some charactors
 autocmd FileType * setlocal formatoptions+=mM
 autocmd FileType * setlocal formatoptions-=cro " Disable automatic insertions of a comment header
