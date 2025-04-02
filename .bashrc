@@ -35,7 +35,7 @@ fi
 ### Prompt ###
 user_at_machine="\[\e[01;32m\]\u@\h\[\e[m\]"
 cwd="\[\e[01;34m\]\w\[\e[m\]"
-PS1="${user_at_machine} ${cwd}\n \$ "
+PS1="${user_at_machine}:${cwd}\$ "
 
 ### Local Settings ###
 [ -f ${HOME}/.common_config.sh ] && source ${HOME}/.common_config.sh
