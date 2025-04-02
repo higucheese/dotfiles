@@ -27,4 +27,3 @@ for install in "${installs[@]}"
 do
     ln -si ${script_path}/${install}
 done
-
