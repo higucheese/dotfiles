@@ -42,3 +42,8 @@ alias la='ls -A'               # all but . and ..
 ### LANG ###
 export LANG=ja_JP.UTF-8 # Alacritty使用時の文字化け防止
 
+if [ `command -v pf` ]; then
+    alias k='pf kubectl'
+else
+    alias k='kubectl'
+fi
