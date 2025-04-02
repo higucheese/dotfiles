@@ -21,7 +21,6 @@ set showmatch
 set laststatus=2
 set wildmode=list:longest
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set expandtab
 set tabstop=4
 set shiftwidth=4
