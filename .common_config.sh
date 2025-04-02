@@ -2,6 +2,7 @@
 if [ `command -v git` ]; then
     alias lg='git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s"'
     alias lgg='git log --graph --pretty=oneline --decorate --abbrev-commit --name-status'
+    alias gb='for k in $(git branch | grep -v HEAD | sed s/^..//); do echo -e $(git log --color=always -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --)\\t"$k"; done | sort -r'
 fi
 if [ `command -v xdg-open` ]; then
     alias open='xdg-open'
@@ -35,7 +36,7 @@ alias less='less -R'
 
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=auto' # classify files in colour
-alias ll='ls -tl'              # long list sorted with created time
+alias ll='ls -lts'             # long list sorted with created time
 alias la='ls -A'               # all but . and ..
 
 ### LANG ###
