@@ -14,6 +14,10 @@ if [ `command -v nvim` ]; then
 else
     export EDITOR="vi"
 fi
+if [ `command -v pf` ]; then
+    alias kubectl='pf kubectl'
+    alias k='pf kubectl'
+fi
 
 # Ask before deleting files
 alias rm='rm -i'
@@ -40,10 +44,5 @@ alias ll='ls -lts'             # long list sorted with created time
 alias la='ls -A'               # all but . and ..
 
 ### LANG ###
-export LANG=ja_JP.UTF-8 # Alacritty使用時の文字化け防止
-
-if [ `command -v pf` ]; then
-    alias k='pf kubectl'
-else
-    alias k='kubectl'
-fi
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8

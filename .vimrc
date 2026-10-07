@@ -7,6 +7,7 @@ autocmd BufWritePre * :%s/\s\+$//ge
 " }}}
 " setting
 syntax enable
+set encoding=utf-8
 set fenc=utf-8
 set autoread
 
