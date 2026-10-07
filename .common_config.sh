@@ -1,3 +1,6 @@
+### PATH ###
+export PATH=${HOME}/bin:${HOME}/.npm-global/bin:${KREW_ROOT:-$HOME/.krew}/bin:${PATH}
+
 ### alias ###
 if [ `command -v git` ]; then
     alias lg='git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s"'
